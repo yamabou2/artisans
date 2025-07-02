@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form入力結果</title>
+</head>
+<body>
+	<!--フォーム入力内容確認 -->
+<p>
+入力を受け付けました。<br>
+お名前：<span th:text="${name}"></span><br>
+メールアドレス：<span th:text="${mail}"></span><br>
+ご年齢：<span th:text="${age}"></span><br>
+問合せ内容：<span th:text="${contents}"></span>
+</p>
+</body>
+</html>

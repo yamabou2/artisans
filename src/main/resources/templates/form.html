@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Artisans Form</title>
+</head>
+<body>
+	<!--フォームのフィールド操作-->
+<form action="/formresult" method="post" th:object="${artisansForm}">
+    <div>
+        名前<br>
+        <input th:field="*{name}" type="text">
+    </div>
+    <div>
+        メールアドレス<br>
+        <input th:field="*{mail}" type="email">
+    </div>
+    <div>
+        ご年齢<br>
+        <input th:field="*{age}" type="text">
+    </div>
+    <div>
+        問合せ内容<br>
+        <input th:field="*{contents}" type="text">
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+</body>
+</html>
