@@ -5,6 +5,15 @@
 <title>Artisans Home</title>
 </head>
 <body>
-
+	<a href="index.html">Artisans<a>
+	<p th:if="${error}" th:text="${error}">エラーメッセージ</p>
+	<form action="/upload" method="post" enctype="multipart/form-data">
+    アップロードするファイルを選択してください<br>
+    <input type="file" name="file" accept="image/jpeg">
+    <input type="submit">
+    </form>
+<p>
+    <img src="/images/picture.jpg">
+</p>
 </body>
 </html>
