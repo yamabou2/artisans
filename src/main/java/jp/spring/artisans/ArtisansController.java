@@ -23,15 +23,16 @@ public class ArtisansController {
 //	フォームデータのやりとり
 	@PostMapping("/formresult")
 	public String showIndex(@ModelAttribute ArtisansForm form,Model model) {
-		model.addAttribute("name", form.getName());
-	    model.addAttribute("mail", form.getMail());
-	    model.addAttribute("age", form.getAge());
-	    model.addAttribute("contents", form.getContents());
+		model.addAttribute("name",form.getName());
+	    model.addAttribute("mail",form.getMail());
+	    model.addAttribute("age",form.getAge());
+	    model.addAttribute("contents",form.getContents());
 	    return "formresult";
 	}
 	@GetMapping("/form")
 	public String showForm(Model model) {
-		model.addAttribute("artisansForm", new ArtisansForm());
+		model.addAttribute("artisansForm",new ArtisansForm());
 		return "form";
 	}
+	
 }
