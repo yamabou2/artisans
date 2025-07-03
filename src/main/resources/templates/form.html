@@ -5,24 +5,40 @@
 <title>Artisans Form</title>
 </head>
 <body>
-<a href="index.html">Artisans<a>
+<a href="index.html">Artisans</a>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/form">Contact</a></li>
+	</ul>
 	<!--フォームのフィールド操作-->
 <form action="/formresult" method="post" th:object="${artisansForm}">
     <div>
         名前<br>
         <input th:field="*{name}" type="text">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            名前入力エラー
+        </span>
     </div>
     <div>
         メールアドレス<br>
         <input th:field="*{mail}" type="email">
+        <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">
+            メールアドレス入力エラー
+        </span>
     </div>
     <div>
         ご年齢<br>
-        <input th:field="*{age}" type="text">
+        <input th:field="*{age}" type="number">
+        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
+            年齢入力エラー
+        </span>
     </div>
     <div>
         問合せ内容<br>
         <input th:field="*{contents}" type="text">
+        <span th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}">
+            問合せ入力エラー
+        </span>
     </div>
     <div>
         <input type="submit">

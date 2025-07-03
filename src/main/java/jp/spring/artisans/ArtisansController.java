@@ -6,11 +6,14 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class ArtisansController {
@@ -55,11 +58,10 @@ public class ArtisansController {
 //	
 //	フォームデータのやりとり
 	@PostMapping("/formresult")
-	public String showIndex(@ModelAttribute ArtisansForm form,Model model) {
-		model.addAttribute("name",form.getName());
-	    model.addAttribute("mail",form.getMail());
-	    model.addAttribute("age",form.getAge());
-	    model.addAttribute("contents",form.getContents());
+	public String showIndex(@Valid @ModelAttribute ArtisansForm form,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "form";
+		}
 	    return "formresult";
 	}
 	@GetMapping("/form")

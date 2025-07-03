@@ -5,7 +5,11 @@
 <title>Artisans Home</title>
 </head>
 <body>
-	<a href="index.html">Artisans<a>
+	<a href="/">Artisans<a>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/form">Contact</a></li>
+		</ul>
 	<p th:if="${error}" th:text="${error}">エラーメッセージ</p>
 	<form action="/upload" method="post" enctype="multipart/form-data">
     アップロードするファイルを選択してください<br>
