@@ -21,5 +21,8 @@
 <ul>
     <li th:each="memo : ${artisansSession.memos}" th:text="${memo}"></li>
 </ul>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="ログアウト">
+</form>
 </body>
 </html>

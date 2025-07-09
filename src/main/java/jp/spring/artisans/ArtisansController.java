@@ -31,6 +31,12 @@ public class ArtisansController {
 		return "index";
 	}
 	
+//	ログイン機能
+	@GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+	
 //	画像アップロード
 	@PostMapping("/upload")
     public String upload(@RequestParam MultipartFile file, Model model) {
@@ -67,7 +73,7 @@ public class ArtisansController {
 		return "form";
 	}
 	
-//	セッション
+//	セッション機能
 	@ModelAttribute("artisansSession")
 	public ArtisansSession sessionMemo() {
 		return new ArtisansSession();
