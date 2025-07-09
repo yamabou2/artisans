@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>セッション</title>
+</head>
+<body>
+	<a href="/">Artisans</a>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/session">Memo</a></li>
+			<li><a href="/form">Contact</a></li>
+		</ul>
+<form action="/add" method="post">
+    <input type="text" name="memo">
+    <input type="submit">
+</form>
+<p>
+    <a href="/clear">全消去</a>
+</p>
+<ul>
+    <li th:each="memo : ${artisansSession.memos}" th:text="${memo}"></li>
+</ul>
+</body>
+</html>

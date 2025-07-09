@@ -5,18 +5,19 @@
 <title>Form入力結果</title>
 </head>
 <body>
-<a href="index.html">Artisans<a>
+<a href="/">Artisans</a>
 	<ul>
 		<li><a href="/">Home</a></li>
+		<li><a href="/session">Memo</a></li>
 		<li><a href="/form">Contact</a></li>
 	</ul>
 	<!--フォーム入力内容確認 -->
-<p>
+<p th:object="${artisansForm}">
 入力を受け付けました。<br>
-お名前：<span th:text="${name}"></span><br>
-メールアドレス：<span th:text="${mail}"></span><br>
-ご年齢：<span th:text="${age}"></span><br>
-問合せ内容：<span th:text="${contents}"></span>
+お名前：<span th:text="*{name}"></span><br>
+メールアドレス：<span th:text="*{mail}"></span><br>
+ご年齢：<span th:text="*{age}"></span><br>
+問合せ内容：<span th:text="*{contents}"></span>
 </p>
 </body>
 </html>

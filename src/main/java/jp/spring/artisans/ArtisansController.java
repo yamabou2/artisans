@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.Valid;
 
 @Controller
+@SessionAttributes("artisansSession")
 public class ArtisansController {
 	
 //	依存関係の注入
@@ -50,12 +53,7 @@ public class ArtisansController {
 		}
         return "index";
     }
-////	フォーム画面
-//	@GetMapping("form")
-//	public String form() {
-//		return "form";
-//	}
-//	
+
 //	フォームデータのやりとり
 	@PostMapping("/formresult")
 	public String showIndex(@Valid @ModelAttribute ArtisansForm form,BindingResult bindingResult) {
@@ -65,9 +63,31 @@ public class ArtisansController {
 	    return "formresult";
 	}
 	@GetMapping("/form")
-	public String showForm(Model model) {
-		model.addAttribute("artisansForm",new ArtisansForm());
+	public String showForm(@ModelAttribute ArtisansForm form) {
 		return "form";
+	}
+	
+//	セッション
+	@ModelAttribute("artisansSession")
+	public ArtisansSession sessionMemo() {
+		return new ArtisansSession();
+	}
+	
+	@GetMapping("/session")
+	public String session() {
+		return "session";
+	}
+	
+	@PostMapping("/add")
+	public String add(ArtisansSession artisansSession,String memo) {
+		artisansSession.getMemos().add(memo);
+		return "redirect:/session";
+	}
+	
+	@GetMapping("/clear")
+	public String clear(SessionStatus sessions) {
+		sessions.setComplete();
+		return "redirect:/session";
 	}
 	
 }
